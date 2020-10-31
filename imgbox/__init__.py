@@ -1,0 +1,6 @@
+__version__ = '0.0.1'
+__author__ = 'plotski'
+__author_email__ = 'plotski@example.org'
+__command_name__ = 'imgbox'
+__homepage_url__ = 'https://github.com/plotski/imgbox-cli'
+__bugtracker_url__ = 'https://github.com/plotski/imgbox-cli/issues'
