@@ -1,3 +1,3 @@
-2020-??-?? 0.0.1
+2020-10-31 0.0.1
   * Initial release after spinoff from pyimgbox
   * With --json, print a list of objects for each given image.
