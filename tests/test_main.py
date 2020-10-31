@@ -14,11 +14,19 @@ class AsyncMock(Mock):
         return coro()
 
 
+class AsyncContextManagerMock(Mock):
+    async def __aenter__(self):
+        return self.aenter
+
+    async def __aexit__(self, *args):
+        pass
+
+
 @pytest.fixture
 def gallery(mocker):
     return mocker.patch(
         'pyimgbox.Gallery',
-        Mock(return_value=Mock(__aenter__=AsyncMock(), __aexit__=AsyncMock())),
+        Mock(return_value=AsyncContextManagerMock()),
     )
 
 
