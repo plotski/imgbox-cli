@@ -14,13 +14,13 @@ async def _async_enumerate(async_iter, start=0):
 
 def _assert_file_ok(filepath):
     if not os.path.exists(filepath):
-        raise AssertionError(f'No such file')
+        raise AssertionError('No such file')
     if not os.path.isfile(filepath):
-        raise AssertionError(f'Not a file')
+        raise AssertionError('Not a file')
     if not os.access(filepath, os.R_OK):
-        raise AssertionError(f'Not readable')
+        raise AssertionError('Not readable')
     if os.path.getsize(filepath) > pyimgbox.MAX_FILE_SIZE:
-        raise AssertionError(f'File is larger than {pyimgbox.MAX_FILE_SIZE} bytes')
+        raise AssertionError('File is larger than {pyimgbox.MAX_FILE_SIZE} bytes')
 
 
 def _all_files_ok(filepaths):

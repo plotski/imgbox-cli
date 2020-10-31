@@ -3,7 +3,7 @@ import os
 from unittest.mock import Mock, call
 
 import pytest
-from pyimgbox import Submission, MAX_FILE_SIZE
+from pyimgbox import MAX_FILE_SIZE, Submission
 
 from imgbox import _output
 
@@ -47,7 +47,7 @@ def test_assert_file_ok_with_nonexisting_file():
         _output._assert_file_ok('path/to/nonexisting/file.jpg')
 
 def test_assert_file_ok_with_directory(tmp_path):
-    with pytest.raises(AssertionError, match=rf'^Not a file$'):
+    with pytest.raises(AssertionError, match=r'^Not a file$'):
         _output._assert_file_ok(tmp_path)
 
 def test_assert_file_ok_with_unreadable_file(tmp_path):
@@ -55,7 +55,7 @@ def test_assert_file_ok_with_unreadable_file(tmp_path):
     filepath.write_bytes(b'data')
     os.chmod(filepath, 0x000)
     try:
-        with pytest.raises(AssertionError, match=rf'^Not readable$'):
+        with pytest.raises(AssertionError, match=r'^Not readable$'):
             _output._assert_file_ok(filepath)
     finally:
         os.chmod(filepath, 0x600)
@@ -166,10 +166,6 @@ async def test_text_handles_error_when_adding_to_gallery(mock_io, mock_gallery, 
     assert mock_gallery.add.call_args_list == [
         call(['path/to/foo.jpg', 'path/to/bar.jpg', 'path/to/baz.jpg'])
     ]
-
-
-
-
 
 
 @pytest.mark.asyncio
