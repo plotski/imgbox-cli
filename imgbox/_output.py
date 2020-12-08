@@ -20,7 +20,7 @@ def _assert_file_ok(filepath):
     if not os.access(filepath, os.R_OK):
         raise AssertionError('Not readable')
     if os.path.getsize(filepath) > pyimgbox.MAX_FILE_SIZE:
-        raise AssertionError('File is larger than {pyimgbox.MAX_FILE_SIZE} bytes')
+        raise AssertionError(f'File is larger than {pyimgbox.MAX_FILE_SIZE} bytes')
 
 
 def _all_files_ok(filepaths):
